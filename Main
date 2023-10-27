@@ -53,4 +53,18 @@ public class Main {
         }
         return "";
     }    
+
+    //Method 4 Times Table
+    Public void TimesTable(int n){
+    for (int i = 1; i <= n; i++){
+    int j = 1;
+    while (j <= n){
+    System.out.print(i*j + " ");
+    j++;
+    if (j==n+1){
+    System.out.println();
+    }
+    }
+    }
+    }
 }
