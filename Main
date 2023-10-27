@@ -1,6 +1,56 @@
 public class Main {
 
-    public static void Palindrome(){
-        
+    //Method 1 Palindrome
+    public void Palindrome(String str){
+        String opp = "";
+        String nonLetters = ",.:;()[]{}!?@#$%^&* ";
+
+        for (int i = 0; i < str.length(); i++){
+            if (nonLetters.contains(str.substring(i, i+1))) nonLetters.replace(str.substring(i, i+1), "");
+        }
+        for (int i = str.length(); i>0; i--){
+            opp += str.substring(i-1, i);
+        }
+        if (opp.equals(str)) {
+            System.out.println("true"); //Prints True if opp equals original string (Is palindrome)
+        } else {
+            System.out.println("false"); //Prints False if opp doesnt equals original string (Is not palindrome)
+        }
     }
+
+    //Method 2 Pig Latin Translator
+    Public String PigLatin(String str){
+        int spaces = 0;
+        if (str.length()<=2) return str;
+        for (int i = 0; i < str.length(); i++){
+            if (str.charAt(i) == ' '){
+                spaces++;
+            }
+        }
+        if (spaces==0){
+            return (str.substring(1, str.length())+str.charAt(0)+"ay");
+        }
+
+        if (spaces!=0){
+            int x = 0;
+            int j = 0;
+            String piece = "";
+            while(x <= str.length()){
+                if (!str.substring(j, x).contains(" ")){
+                    x++;
+                    if (x==str.length()){
+                    if (str.substring(j, str.length()).length()>3) piece += str.substring(j+1, str.length())+str.charAt(j)+"ay";
+                    if (str.substring(j, str.length()).length()<=3) piece += str.substring(j, str.length());
+                    }
+                } else if (str.substring(j, x).contains(" ")) {
+                    if (str.substring(j, x).length()>3) piece += str.substring(j+1, x-1)+str.charAt(j)+"ay ";
+                    if (str.substring(j, x).length()<=3) piece += str.substring(j, x);
+                    j=x;
+                    x++;
+                }
+            }
+            return piece;
+        }
+        return "";
+    }    
 }
