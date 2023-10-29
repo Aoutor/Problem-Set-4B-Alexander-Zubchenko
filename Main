@@ -52,7 +52,26 @@ public class Main {
             return piece;
         }
         return "";
-    }    
+    }
+
+
+    //Method 3 ascending numbers
+
+    Public int ascending(int a, int b) {
+        int count = 0;
+        for (int i = a; i < b; i++) {
+            String numStr = Integer.toString(i);
+            boolean works = true;
+            for (int k = 1; j < numStr.length(); k++) {
+                if (numStr.charAt(j) <= numStr.charAt(k - 1)) works = false;
+            }
+            if (works) count++;
+        }
+
+        return count;
+    }
+
+    
 
     //Method 4 Times Table
     Public void TimesTable(int n){
